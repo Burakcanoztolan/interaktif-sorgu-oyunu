@@ -1,0 +1,19 @@
+{
+  "soru_kategorileri": {
+    "cinayet_ani": {
+      "panic_level_0": "Ben o sırada miks odasındaydım. Kulaklıklarım takılıydı, hiçbir şey duymadım.",
+      "panic_level_1": "Söyledim ya, kendi halimdeydim! Kapı kapalıydı, ses yalıtımı var o odada.",
+      "panic_level_2": "Neden sürekli aynı şeyi soruyorsun? Zaten yere düşerken o kadar kötü bir ses çıktı ki... yani, öyle tahmin ediyorum!"
+    },
+    "cinayet_silahi": {
+      "panic_level_0": "Piyanonun üstündeki metronom dışında her şey yerli yerindeydi.",
+      "panic_level_1": "Ben o metronomu elime bile almadım. Neden bana metronomu soruyorsun?",
+      "panic_level_2": "Üzerinde parmak izim çıkarsa bu sadece daha önce yerini değiştirdiğim içindir!"
+    },
+    "kurbanla_iliski": {
+      "panic_level_0": "Aramız iyiydi. Sadece telif hakları konusunda küçük bir anlaşmazlığımız vardı.",
+      "panic_level_1": "Beni gruptan atamazdı, şarkıların yarısını ben yazdım! Kavga etmedik.",
+      "panic_level_2": "Her şeyi o kontrol etmek istiyordu! Evet tartıştık ama ona ben zarar vermedim!"
+    }
+  }
+}
