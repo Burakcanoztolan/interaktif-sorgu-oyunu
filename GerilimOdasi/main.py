@@ -2,7 +2,7 @@ import json
 import streamlit as st
 import joblib
 
-# 1. YENİ: Eğittiğimiz Yapay Zeka Modelini ve Vektörizeri Yüklüyoruz
+# 1. Eğittiğimiz Yapay Zeka Modelini ve Vektörizeri Yükleme
 try:
     intent_model = joblib.load('intent_model.pkl')
     vectorizer = joblib.load('vectorizer.pkl')
@@ -15,24 +15,23 @@ def veritabanini_yukle(dosya_yolu):
         return json.load(dosya)
 
 
-# 2. YENİ: Makine Öğrenmesi Tabanlı Niyet Analizi
+# 2. Makine Öğrenmesi Tabanlı Niyet Analizi
 def niyet_analizi(metin):
-    # Oyuncunun metnini modelin anlayacağı matematiksel vektöre çevir
+    # Oyuncunun metnini modelin anlayacağı matematiksel vektöre çevirme bölümü
     metin_vektoru = vectorizer.transform([metin])
 
-    # Modeli kullanarak bu cümlenin hangi kategoriye ait olduğunu tahmin et
+    # Modeli kullanarak bu cümlenin hangi kategoriye ait olduğunu tahmin etme bölümü
     tahmin = intent_model.predict(metin_vektoru)[0]
     return tahmin
 
 
-# Stres analizi şimdilik kelime avı (kural tabanlı) olarak kalabilir
 def stres_analizi(metin):
     metin = metin.lower()
     agresifler = ["yalan", "katil", "polis", "kamera", "kanıt", "itiraf", "hapis"]
     return sum(1 for k in agresifler if k in metin)
 
 
-# --- STREAMLIT ARAYÜZÜ (Aynı Kalıyor) ---
+# --- STREAMLIT ARAYÜZÜ ---
 st.set_page_config(page_title="Gerilim Odası", page_icon="🕵️")
 st.title("Gerilim Odası: Sorgu Başlıyor")
 
@@ -57,7 +56,6 @@ if oyuncu_sorusu:
         st.markdown(oyuncu_sorusu)
     st.session_state.mesajlar.append({"role": "user", "content": oyuncu_sorusu})
 
-    # Artık bu fonksiyon arka planda if-else değil, SVM algoritmasını çalıştırıyor!
     kategori = niyet_analizi(oyuncu_sorusu)
     stres_etkisi = stres_analizi(oyuncu_sorusu)
 
@@ -75,4 +73,5 @@ if oyuncu_sorusu:
 
     with st.chat_message("assistant"):
         st.markdown(cevap)
+
     st.session_state.mesajlar.append({"role": "assistant", "content": cevap})
